@@ -1,0 +1,40 @@
+{
+    "openapi": "3.1.0",
+    "host": "localhost:7777",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "tasks",
+        "description": "Tasks in todo list"
+      }
+    ],
+    "schemes": ["http"],
+    "paths": {
+      "/tasks": {
+        "get": {
+          "tags": ["tasks"],
+          "operationId": "getAllTasks",
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": { "$ref": "#/definitions/Task" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Task": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "title": { "type": "string" },
+          "done": { "type": "boolean" }
+        }
+      }
+    }
+  }
